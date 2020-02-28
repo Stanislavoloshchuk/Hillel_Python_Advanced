@@ -16,3 +16,5 @@ url_list = [
 catalog_finder = ['/catalog/']
 filtered_urls = [u for u in url_list for l in catalog_finder if u.find(l) != -1]
 print(filtered_urls)
+
+#Output: ['www.google.com/catalog/names', 'www.ya.com/catalog/cars', 'www.hillel.ua/catalog/courses']
