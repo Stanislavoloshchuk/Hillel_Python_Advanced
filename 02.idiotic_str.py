@@ -6,7 +6,7 @@
 
 def idiotic_str(input_str):
     ret = ''
-    l = True
+    l = False
     for letter in input_str:
         if l:
             ret += letter.upper()
@@ -17,3 +17,7 @@ def idiotic_str(input_str):
 
 
 print(idiotic_str(input('Please input string:')))
+
+# Output: 
+# Please input string: тестовая строка
+# тЕсТоВаЯ СтРоКа
