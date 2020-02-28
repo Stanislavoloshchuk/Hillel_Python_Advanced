@@ -13,3 +13,5 @@ for score in scores:
     avg_score.append("|".join([cols[0], str(round(sum(nums) / len(nums)))]))
 
 print(avg_score)
+
+# Output: ['Mike|65', 'Jane|42']
