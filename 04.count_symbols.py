@@ -17,3 +17,5 @@ def char_frequency(str1):
 
 
 print(char_frequency('The fool doth think he is wise, but the wise man knows himself to be a fool.'))
+
+# Output: {'T': 1, 'h': 6, 'e': 7, ' ': 16, 'f': 3, 'o': 7, 'l': 3, 'd': 1, 't': 5, 'i': 5, 'n': 3, 'k': 2, 's': 5, 'w': 3, ',': 1, 'b': 2, 'u': 1, 'm': 2, 'a': 2, '.': 1}
