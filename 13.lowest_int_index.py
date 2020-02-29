@@ -15,3 +15,5 @@ def get_min_indexes(array):
 
 
 print(get_min_indexes(array))
+
+# Output: 17
