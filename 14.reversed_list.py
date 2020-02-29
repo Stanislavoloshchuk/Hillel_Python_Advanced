@@ -9,3 +9,5 @@ def reversed_list(input_list):
 input_list = [10, 11, 2, 3, 5, 8, 23, 11, 2, 5, 76, 43, 2, 32, 76, 3, 10, 0, 1]
 for reversed_list in reversed(input_list):
     print(reversed_list, end=", ")
+
+# Output: 1, 0, 10, 3, 76, 32, 2, 43, 76, 5, 2, 11, 23, 8, 5, 3, 2, 11, 10, 
