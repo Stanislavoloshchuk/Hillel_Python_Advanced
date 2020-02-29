@@ -22,3 +22,5 @@ common_key = {i[0]: i[1] for i in common_key}
 common_keys = dict1.keys() & dict2.keys()
 
 print(common_keys)
+
+# Outupt: {'LOA', 'DWT', 'LBP', 'Vessel_type'}
