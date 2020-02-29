@@ -9,12 +9,17 @@ def get_str_center(input_str):
         return input_str
     return get_str_center(input_str[1:-1])
 
+def get_str_center_checked(input_str):
+    if len(input_str) <= 2:
+        return ('Please enter more then one letter')
+    return get_str_center(input_str)
+
 
 tests = ['bottle', 'bottles', 'x']
 for test in tests:
-    print(f"{test} -> {get_str_center(test)}")
+    print(get_str_center_checked(test))
 
 # Output: 
 #bottle -> tt
 #bottles -> ttl
-#x -> x
+#x -> Please enter more then one letter
