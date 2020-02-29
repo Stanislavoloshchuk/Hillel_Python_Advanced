@@ -11,3 +11,5 @@ for i in range(k):
     result.append(max(list2))  # append largest element to list of results
     list2.remove(max(list2))  # remove largest element from old list
 print(result)
+
+# Output: [76, 76, 43]
