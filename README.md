@@ -3,7 +3,9 @@ Hillel_Courses
 
 Hi, Yehor!
 
-Completed tasks 15 out of 16; Still working on No.3.
+Finally done!
+
+Completed tasks 16 out of 16! 
 
 Best regards, 
 Stanislav.
