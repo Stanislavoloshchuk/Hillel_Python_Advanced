@@ -4,12 +4,17 @@
 """
 
 
-def middle(input_str):
+def get_str_center(input_str):
     if len(input_str) < 4:
         return input_str
-    return middle(input_str[1:-1])
+    return get_str_center(input_str[1:-1])
 
 
 tests = ['bottle', 'bottles', 'x']
 for test in tests:
-    print(f"{test} -> {middle(test)}")
+    print(f"{test} -> {get_str_center(test)}")
+
+# Output: 
+#bottle -> tt
+#bottles -> ttl
+#x -> x
