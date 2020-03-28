@@ -1,0 +1,60 @@
+# Naomi is a self-described intersectional transfeminist =)
+
+Computer languages aren't as complex as human languages, but thesame thing is true -the structures of the language controls how you think about something.
+
+How does a language approach handling errors?However you look at them, the approach a language takes to handling errors is an important part ofhow the language works; it influences the structure and flow of the code.
+
+Python's approach is to handle, rather than to avoid, errors:
+-EAFP - Easier to Ask Forgiveness than Permission
+-contrast with, say, Java - LBYL "Look Before You Leap"
+
+This approach makes sense for Python because...
+-Simpler, easier to read code
+-Duck typing (о латентной типизации почитал ещё тут https://devopedia.org/duck-typing)
+-Late binding of variables (types)
+
+Description of Python exceptions:
+try:
+Followed by block of code
+
+except <Exception class> as e:
+Exception handling block
+
+else:
+Block that executes if no exception is raised
+
+finally:
+Block that is always executed, e.g., to close a file
+You can also deliberately raise and exception: raise <subclass of BaseException>
+
+Guidelines for using exceptions:
+-Consider how often will the exception occur
+-Be thoughtful about what exceptions you're handling and how
+-Use built-in exceptions where it makes sense
+
+Guido van Rossum, The Harry Potter Theory of Programming Language Design
+
+SystemExit:
+-sys.exit() raises SystemExit exception
+-raise SystemExit has the same effect
+
+EOFError
+Reading a file when there's nothing left to read raises an EOFError exception
+
+Exceptions ARE a bit slower:
+-they are optimized and are not expensive
+-they occur so rarely that there is little cost
+-overall more Pythonic code tends to be faster
+-Exceptions are such an integral part of Python, that by the time you notice, they should be understandable, Pythonic, even used correctly they make the code more readable
+
+GeneratorExit
+-generators raise StopIteration when exhausted, like other iterators
+-not "finishing" a generator object leaves it blocking after the yield latest yield...
+-when the generator object is "finished", generator.close() raises a GeneratorExit exception at the last yield
+
+In Python exceptions are used as form of flow control
+-when the exception condition is expected to be very infrequent compared to the other conditions
+-when the exception condition is rather different than the normal condition
+-when using an exception instead of checking for the error condition makes code simpler
+
+P.S. Yes, (in Python) it really is easier to ask forgiveness than permission
