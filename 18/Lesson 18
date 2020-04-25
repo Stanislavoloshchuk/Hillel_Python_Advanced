@@ -1,0 +1,22 @@
+from multiprocessing import Process, Pipe
+from time import sleep
+from os import getpid
+
+msg0 = 'ping'
+msg1 = 'pong'
+
+
+def ponger(receiver, sender, response):
+    while True:
+        receiver(print(f"Process{getpid()} got message: {msg0}"))
+        sleep(2)
+        sender(f"send message {msg1}")
+        response(print(sender()))
+
+
+if __name__ == "__main__":
+    receiver_1, sender_1 = Pipe()
+    receiver_2, sender_2 = Pipe()
+
+    process_1 = Process(target=ponger, args=(receiver_1, sender_2)).start()
+    process_2 = Process(target=ponger, args=(receiver_2, sender_1)).start()
