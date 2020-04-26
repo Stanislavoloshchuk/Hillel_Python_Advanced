@@ -1,3 +1,32 @@
+# Task_01
+
+import asyncio
+import aiohttp
+import json
+
+urls = [
+    "http://voloshchukstanislav.pythonanywhere.com",
+    "http://google.com"
+]
+
+
+async def request_data(url, json_string):
+    print(f'requested url {url}')
+    async with aiohttp.request('GET', url) as resp:
+        json_string = json.dumps(resp.status)
+        print(f'response {url} - {resp.status}')
+
+
+async def main():
+    await asyncio.gather(*(request_data(url) for url in urls))
+
+
+asyncio.run(main())
+
+    На остальное пока мозгов не хватило... буду ещё пробовать...
+
+# Task_02
+
 from multiprocessing import Process, Pipe
 from time import sleep
 from os import getpid
@@ -20,3 +49,4 @@ if __name__ == "__main__":
 
     process_1 = Process(target=ponger, args=(receiver_1, sender_2)).start()
     process_2 = Process(target=ponger, args=(receiver_2, sender_1)).start()
+    
