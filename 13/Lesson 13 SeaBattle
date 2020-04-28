@@ -1,1 +1,109 @@
 Lesson 13
+
+from random import randint
+
+
+class Player(object):
+    def __init__(self):
+        self.field = [["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                      ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"]]
+
+        self.my_field = [["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"],
+                         ["~", "~", "~", "~", "~", "~", "~", "~", "~", "~"]]
+
+        self.ship = 1
+
+    # def attack(self, field, row, golumn):
+    #     if field[row][golumn] == "0":
+    #         self.ship -= 1
+    #
+    #         return "killed"
+    #     else:
+    #         return "miss"
+    #
+    # def killed(self, status, row, golumn):
+    #     if status == "killed":
+    #         self.my_field[row][golumn] == "*"
+    #         return "killed"
+
+    def fire(self, row, golumn):
+        if self.my_field[row][golumn] == "0":
+            self.ship -= 1
+            self.my_field[row][golumn] = "*"
+            # self.field[row][golumn] = "*"
+
+            return "killed"
+        else:
+            # self.field[row][golumn] = "&"
+            return "miss"
+
+    def fleet(self):
+        i = 0
+        while i != self.ship:
+            a = randint(0, 9)
+            b = randint(0, 9)
+            if self.my_field[a][b] == "~":
+                i += 1
+                self.my_field[a][b] = "0"
+
+    def square(self):
+        return self.field
+
+    def turn(self):
+        row = input('please enter a row: ')
+        golumn = input('please enter a golumn: ')
+        return row, golumn
+
+
+player_1 = Player()
+player_2 = Player()
+
+player_1.fleet()
+player_2.fleet()
+
+# print(player_1.my_field)
+# print(player_2.my_field)
+while player_1.ship != 0 and player_2.ship != 0:
+
+    print("Player 1")
+    for element in player_1.my_field:
+        a, b, c, d, e, f, g, h, i, j = element[0], element[1], element[2], element[3], element[4], \
+                                       element[5], element[6], element[7], element[8], element[9]
+        print(a, b, c, d, e, f, g, h, i, j)
+
+    a, b = player_1.turn()
+    print(player_2.fire(int(a), int(b)))
+
+    print(player_2.ship)
+
+    print("Player 2")
+    for element in player_2.my_field:
+        a, b, c, d, e, f, g, h, i, j = element[0], element[1], element[2], element[3], element[4], \
+                                       element[5], element[6], element[7], element[8], element[9]
+        print(a, b, c, d, e, f, g, h, i, j)
+    c, d = player_2.turn()
+    print(player_1.fire(int(c), int(d)))
+    print(player_1.ship)
+
+if player_1.ship != 0:
+    winner = ": Player 1"
+else:
+    winner = ": Player 2"
+
+print(f'The end, winner{winner}')
