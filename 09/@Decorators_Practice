@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 
 
 # Напишите функцию копирования файлов. На вход ваша функция принимает два аргумента:
@@ -7,12 +6,15 @@ from datetime import datetime
 # - путь каталога куда этот файл необходимо скопировать
 
 def copyFileDir(inFile, outDir):
-    # your code here
+    file_name = inFile.split('/')[-1]
+    with open(inFile, 'r') as source,\
+            open(f'{outDir}/{file_name}', 'a') as recipient:  
+        recipient.write(source.read())
+        
+# The 'r' means that the file should be opened in read mode 
+# The 'a' means append to a file or start writing at the end
 
-
-testfile = 'tasks_13_03.py'
-testdir = 'test'
-
+copyFileDir('tasks_13_03.py', '/home/stanislav/PycharmProjects/Education/task_13_03.py')
 
 # Напишите декоратор для превращения функции print в генератор html-тегов
 # Декоратор должен принимать список тегов italic, bold, underline
@@ -25,7 +27,10 @@ def str_to_html(tags):
             "underline": f"<u>%text%</u>",
         }
         def wrapper(text):
-            # your code here
+            result = text
+            for tag in tags:
+                result = tag_base[tag].replace('%text%', result)
+            return result
         return wrapper
     return decorator
 
@@ -39,16 +44,16 @@ def get_text(text):
 # Напишите декоратор для этой функции, который прочитает все файлы с
 # раширением .log из найденных
 
+path = "/LogDataPath/"
+
 def log_reading(func):
     def wrapper(*args):
-        # your code here
+        return [f for f in listdir(path) if isfile(join(path, f)) and f.endswith(".log")]
     return wrapper
-
 
 @log_reading
 def get_files():
-    # your code here
-    return file_list
+    return os.listdir()
 
 
 # Напишите функцию, которая читает и распечатывает текстовый файл.
