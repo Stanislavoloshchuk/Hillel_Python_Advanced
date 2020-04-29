@@ -3,7 +3,7 @@ import math
 
 
 class calc:
-    def getandreplace(self):
+    def get_and_replace(self):
 
         self.expression = self.e.get()
         self.newtext = self.expression.replace(self.newdiv, '/')
@@ -11,7 +11,7 @@ class calc:
 
     def equals(self):
 
-        self.getandreplace()
+        self.get_and_replace()
         try:
             self.value = eval(self.newtext)
         except SyntaxError or NameError:
@@ -23,7 +23,7 @@ class calc:
 
     def squareroot(self):
 
-        self.getandreplace()
+        self.get_and_replace()
         try:
             self.value = eval(self.newtext)  # evaluate the expression using the eval function
         except SyntaxError or NameError:
@@ -37,7 +37,7 @@ class calc:
     def square(self):
         """square method"""
 
-        self.getandreplace()
+        self.get_and_replace()
         try:
             self.value = eval(self.newtext)  # evaluate the expression using the eval function
         except SyntaxError or NameError:
