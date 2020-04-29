@@ -1,6 +1,37 @@
 Lesson 14
 
 import unittest
-from SeaBattle import Player
-import itertools
+import mock
+import SeaBattle
+
+
+# cd /home/stanislav/PycharmProjects/Education/SeaBattle.py # TestDiscovery project_directory
+# python3 -m unittest discover
+
+class TestSeaBattle(unittest.TestCase):
+    def setUp(self):
+        self.player = SeaBattle.Player()
+
+    def test_validate_number(self):
+        with mock.patch('builtins.input', return_value="1"):
+            assert SeaBattle.validate_number('text') is int(1)
+
+    def test_fire(self):
+        response = self.player.fire(1, 1)
+        self.assertEqual(response, 'miss')
+        self.player.my_field[1][2] = "0"
+        response = self.player.fire(1, 2)
+        self.assertEqual(response, 'killed')
+
+    def test_sinked(self):
+        self.player.sinked('killed', 2, 2)
+        response = self.player.field[2][2]
+        self.assertEqual(response, '*')
+        self.player.sinked('miss', 2, 3)
+        response = self.player.field[2][3]
+        self.assertEqual(response, '&')
+
+
+if __name__ == "__main__":
+    unittest.main()
 
