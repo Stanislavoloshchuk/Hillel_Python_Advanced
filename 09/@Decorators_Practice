@@ -58,3 +58,27 @@ def get_files():
 
 # Напишите функцию, которая читает и распечатывает текстовый файл.
 # Напишите декоратор к этой функции, который печатает название файла и количество слов в нем
+
+input_file_name = 'Zen.txt'
+
+import os
+
+def decorator_function(read_file):
+    def wrapper():
+        a = read_file()
+        count = 0
+        name = os.path.basename(os.path.join(os.getcwd(), 'Zen.txt'))
+        print(name)
+        for x in a[f'{input_file_name}']:
+            count += len(x.split(' '))
+        print(f'Number of words in file: {count}')
+
+    return wrapper
+
+@decorator_function
+def read_file():
+    opening = open(input_file_name, "r")
+    reading = opening.readlines()
+    return {input_file_name: reading}
+
+read_file()
