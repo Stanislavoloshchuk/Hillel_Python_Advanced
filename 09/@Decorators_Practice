@@ -61,8 +61,6 @@ def get_files():
 
 input_file_name = 'Zen.txt'
 
-import os
-
 def decorator_function(read_file):
     def wrapper():
         a = read_file()
